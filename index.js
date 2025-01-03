@@ -12,29 +12,22 @@ const { PositionModel } = require("./Models/Position");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
 
-app.use(
-    cors({
-        origin: [
-            "http://localhost:5174", // No trailing slash
-      "https://zerodha-ebon.vercel.app",
-    ],
-    methods: ["GET", "POST", "PUT"],
-    allowedHeaders: ["Content-Type", "Authorization"],
-    credentials: true, // Make sure this is set if you're using cookies or tokens
-})
-);
+// app.use(
+//     cors({
+//         origin: [
+//           "http://localhost:5174",
+//             "http://beckend-zerodha-production.up.railway.app/login", // No trailing slash
+//     ],
+//     methods: ["GET", "POST", "PUT"],
+//     allowedHeaders: ["Content-Type", "Authorization"],
+//     credentials: true, // Make sure this is set if you're using cookies or tokens
+// })
+// );
 
-app.use(
-    cors({
-        origin: [
-            "http://localhost:5173/funds", // No trailing slash
-            "*",
-        ],
-        methods: ["GET", "POST", "PUT"],
-        allowedHeaders: ["Content-Type", "Authorization"],
-        credentials: true, // Make sure this is set if you're using cookies or tokens
-    })
-);
+app.use(cors({
+  origin: true, // Dynamically reflect the request origin
+  credentials: true,
+}));
 
 app.options("*", cors()); // Handle preflight requests
 
